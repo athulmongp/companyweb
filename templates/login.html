@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOGIN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url("{% static 'img/logcover4.webp'%}");
+            background-size: 100vw;
+            background-position: center;
+            
+            
+        
+        }
+        .form-group input[type='text'],[type='password']
+        {
+            border-radius: 10px;
+            background-color: white;
+            margin-bottom: 10px;
+           
+            
+        }
+        .form-control{
+            background-color: rgb(226, 222, 216);
+            border-radius: 10px;
+            border: 1px solid black;
+            box-shadow: 10px 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        
+        }
+        @media screen and (max-width:992px){
+            .text{
+                margin-bottom: 30px;
+                padding-left: 20px;
+                
+            }
+            body{
+                background-size:cover ;
+            }
+            
+        }
+        @media screen and (max-width:767px){
+            .form-box{
+                padding-left: 10px !important;
+                padding-right: 1px !important;
+                margin-right: 0px !important;
+                
+            }
+            .text h1{
+                font-size: 40px !important;
+                
+            }
+            .text h2{
+                font-size: 20px !important;
+                
+            }
+            
+            body{
+                background-size:cover ;
+            }
+
+        }
+       
+    </style>
+    <script>
+        function validate(){
+            var username=document.getElementById('u');
+            var password=document.getElementById('p');
+
+            if(username.value.trim()==''){
+                alert("please enter Username name");
+                u.style.border= "solid 2px red";
+                return false;
+            }
+            
+            else if(password.value.trim()==''){
+                alert("please enter Password");
+                u.style.border= "solid 3px lightgreen";
+                p.style.border= "solid 2px red";
+                return false;
+            }
+            else{
+                
+                return true;
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="main" style=" padding-top:65px; padding-bottom: 125px; width: 100vw; padding-right: 20px;" >
+       
+        
+        <div class="row">
+         <div class="col-lg-7 col-md-11 d-flex align-items-center">
+             <div class="text" >
+                 <center>
+                     <h1 class="text-white" style="font-size: 60px;text-shadow: 2px 2px 4px #000000;padding-left: 10px;">Create Your Best  Experience</h1>
+                      <h2 class="text-white" style="text-shadow: 2px 2px 4px #000000;">Altos Technologies</h2>
+                 </center>
+             </div>
+         </div>
+         <div class="col-lg-5 col-md-9 col-sm-11" >
+             <div class="form-box  px-2 py-2">
+                <div class="container-fluid">
+                 <form class="bg-info" onsubmit="return validate()"   method="post" action="{% url 'loginpage' %}" enctype="multipart/form-data" style="  padding: 20px; margin-top: 30px; border-radius: 10px; box-shadow: 10px 10px; margin-bottom: 30px; border: 2px solid white;">
+                 
+                   
+                     <div class="form-group">
+                         {% csrf_token %}
+                         <h1 class="text-center" style="color:white; text-shadow: 2px 2px 4px #000000; margin-bottom: 40px;">LOGIN</h1>
+                         {% if messages %}
+                            {% for message in messages %}
+                                <label for="" class="text-center" style="background-color: rgb(255, 0, 0,0.7); width: 100%;color:white;text-shadow: 2px 2px 4px #000000;padding: 10px; border-radius: 10px;">{{message}}</label>
+                            {% endfor %}
+                         {% endif %}
+                 
+                         <input type="text" id="u" name="ui" class="form-control" placeholder="enter User ID " >
+                         <input type="password" id="p" name="pa" class="form-control" placeholder="enter password">
+                        
+                         
+                         <center><input type="submit" id="s" value="LOGIN" class="btn-dark" style="margin-top: 10px;  width: 70%; padding: 10px; border-radius: 10px; background-image: linear-gradient(to right,rgb(75, 73, 73),#807d7c,#d5cece); font-weight: bold;"><br></center>
+                         <center><a href="{% url 'regpage' %}" style="color: white; text-shadow: 2px 2px 4px #5a5959;">don't have an account?sign up</a><br></center>
+                         
+                         
+                     </div>    
+                         
+                 
+                    
+                 </form>
+                </div>
+             </div>
+         </div>
+        </div>     
+       
+     </div>
+</body>
+</html>

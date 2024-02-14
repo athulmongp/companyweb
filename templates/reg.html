@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url("{% static 'img/logcover4.webp'%}");
+            background-size: 100vw;
+            background-position: center;
+            
+            
+        
+        }
+        .form-group input[type='text'],[type='password']
+        {
+            border-radius: 10px;
+            background-color:white;
+            /* margin-bottom: 10px; */
+           
+            
+        }
+        .form-control{
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid black;
+            
+            /* margin-top: 10px; */
+            /* margin-bottom: 5px; */
+        
+        }
+        @media screen and (max-width:992px){
+            .text{
+                margin-bottom: 30px;
+                padding-left: 20px;
+                
+            }
+            body{
+                background-size:cover ;
+            }
+            
+        }
+        @media screen and (max-width:767px){
+            .form-box{
+                padding-left: 10px !important;
+                padding-right: 1px !important;
+                margin-right: 0px !important;
+                
+            }
+            .text h1{
+                font-size: 40px !important;
+                
+            }
+            .text h2{
+                font-size: 20px !important;
+                
+            }
+            
+            body{
+                background-size:cover ;
+            }
+
+        }
+       
+    </style>
+    <script>
+        function validate(){
+            var firstname=document.getElementById('fname');
+            var lastname=document.getElementById('lname');
+            var email=document.getElementById('eid');
+            var username=document.getElementById('uname');
+            var number=document.getElementById('ph');
+      
+
+            if(firstname.value.trim()==''){
+                alert("please enter first name");
+                fname.style.border= "solid 2px red";
+                return false;
+            }
+            
+            else if(lastname.value.trim()==''){
+                alert("please enter last name");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 2px red";
+                return false;
+            }
+            else if(email.value.trim()==''){
+                alert(" please enter email id");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 3px lightgreen";
+                eid.style.border= "solid 3px red";
+                return false;
+            }
+            else if(!email.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,3}$/)){
+                alert(" please correct email id");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 3px lightgreen";
+                eid.style.border= "solid 3px red";
+                return false;
+            }
+            else if(username.value.trim()==''){
+                alert("please enter username");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 3px lightgreen";
+                eid.style.border= "solid 3px lightgreen";
+                uname.style.border= "solid 3px red";
+                return false;
+            }
+            else if(number.value.trim()==''){
+                alert("please enter phone number");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 3px lightgreen";
+                eid.style.border= "solid 3px lightgreen";
+                uname.style.border=  "solid 3px lightgreen";
+                ph.style.border= "solid 3px red";
+                return false;
+            }
+            else if(!number.value==10){
+                alert("please enter phone number");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 3px lightgreen";
+                eid.style.border= "solid 3px lightgreen";
+                uname.style.border=  "solid 3px lightgreen";
+                ph.style.border= "solid 3px red";
+                return false;
+            }
+            
+           
+           
+            else if(certificate.value.trim()==''){
+                alert("please upload certificate");
+                fname.style.border= "solid 3px lightgreen";
+                lname.style.border= "solid 3px lightgreen";
+                eid.style.border= "solid 3px lightgreen";
+                uname.style.border=  "solid 3px lightgreen";
+                ph.style.border= "solid 3px lightgreen";
+                pass.style.border= "solid 3px lightgreen";
+                cpass.style.border= "solid 3px lightgreen";
+                
+                image.style.border= "solid 3px lightgreen";
+                certificate.style.border= "solid 3px red";
+                return false;
+            }
+            else{
+                alert("Your Registration is progress,please wait for mail");
+                return true;
+            }
+
+
+        }
+      
+
+    </script>
+</head>
+
+<body >
+ 
+<div class="main" style="padding-right: 20px;">
+   <div class="row">
+    <div class="col-lg-7 col-md-12 d-flex align-items-center">
+        <div class="text" >
+            <center>
+                <h1 class="text-white" style="font-size: 60px;text-shadow: 2px 2px 4px #000000;padding-left: 10px;">Create Your Best  Experience</h1>
+                 <h2 class="text-white" style="text-shadow: 2px 2px 4px #000000;">Altos Technologies</h2>
+            </center>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-10 col-sm-12">
+        <div class="form-box px-2 py-2">
+           <div class="container-fluid">
+            <form id="form" class="bg-info" method="post" onsubmit="return validate()" action="{% url 'registration' %}" enctype="multipart/form-data" style="  padding: 20px;  margin-top: 30px; border-radius: 10px; box-shadow: 10px 10px; margin-bottom: 30px; border: 2px solid black;">
+            
+              
+                <div class="form-group ">
+                    {% csrf_token %}
+                    <h1  class="text-center" style="color: rgb(255, 255, 255);text-shadow: 2px 2px 4px #000000; margin-bottom: 40px;">REGISTER</h1>
+                    
+                    <input type="text" id="fname" name="fname" class="form-control" placeholder="enter firstname" ><br>
+                    
+                    
+                    <input type="text" id="lname" name="lname" class="form-control" placeholder="enter lastname"><br>
+                   
+                   
+                  
+                    <input type="text" id="eid" name="eid" class="form-control" placeholder="enter email"><br>
+                    
+                 
+            
+                    <input type="text" id="uname" name="uname" class="form-control" placeholder="enter username" ><br>
+                    
+               
+                    
+                    <input type="number"id="ph" name="ph" class="form-control" placeholder="enter phone number"><br>
+                    <select class="form-control" name="subselect" id="" style="margin-bottom: 20px;">
+                        {% for d in data %}
+                             <option value="{{d.id}}">{{d.Course_Name}}</option>
+                        {% endfor %}
+                    </select>
+                   
+                
+                    
+                    <!-- <input type="password" id="pass" name="pass" class="form-control" placeholder="enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br>
+        
+                    <input type="password" id="cpass" name="cpass" class="form-control" placeholder="reenter password"><br> -->
+
+                    <label for="" style="color: white; font-weight: bold;">Upload Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" class="form-control" style="margin-top: 10px; margin-bottom: 20px;">
+
+                    <label for="" style="color: white; font-weight: bold;">Upload certificate</label>
+                    <input type="file" id="certificate" name="certificate" accept="image/*" class="form-control" style="margin-top: 10px; margin-bottom: 20px;">
+                    
+                </div>    
+                    <center><input type="submit"  id="s"  value="REGISTER" class="btn-dark" style="margin-top: 10px;  width: 70%; padding: 10px; border-radius: 10px; background-image: linear-gradient(to right,rgb(75, 73, 73),#807d7c,#d5cece); font-weight: bold;"><br><br></center>
+                    <center><a href="{% url 'log' %}" style="color: rgb(223, 221, 221); text-shadow: 2px 2px 4px #5a5959;">already have an account?signin</a><br></center>
+                   
+            
+               
+            </form>
+           </div>
+        </div>
+    </div>
+   </div>     
+  
+</div>
+
+
+
+
+</body> 
+</html>   
